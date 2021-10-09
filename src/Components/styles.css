@@ -1,6 +1,22 @@
-.register{
-    width:500px;
+.register, .login{
+    width:300px;
 }
-.register input{
-    width:100%;
+.register input, .login input{
+    width: 50%;
+}
+.login{
+    float:left;
+    width:50%;
+}
+.register{
+    width:50%;
+    float:right;
+}
+.container{
+    width:50%;
+    margin:auto;
+    height: auto;
+    background-color: grey;
+    border-radius: 3px;
+    height: 50vh;
 }

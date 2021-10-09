@@ -9,38 +9,76 @@ export const Register = () =>{
     const [password,setPassword] = useState("");
     const [email,setEmail] = useState("");
 
+    const [loginUser, setLoginUser] = useState("");
+    const [LoginPass, setLoginPass] = useState("");
+
     const register = () =>{
-        Axios.post("http://localhost:4000/register", {username:username,password:password,email:email})
+        Axios.post("http://localhost:4000/register", {"username":username,"password":password,"email":email})
     }
-
+    const login = () =>{
+        console.log({"username":loginUser,"password":LoginPass})
+        Axios.post("http://localhost:4000/login", {"username":loginUser,"password":LoginPass})
+        .then(response => console.log(response))
+    }
     return(
-        <div class="register">
-            <form>
-                <label for="Username"><b>Username</b></label>
-                <input type="text"
-                onChange= {(e) =>{
-                    setUsername(e.target.value)
-                }}
-                placeholder="Enter Username"
-                name="username" required/>
+        <div className="container">
 
-                <label for="Password"><b>Password</b></label>
-                <input type="password"
-                onChange= {(e) =>{
-                    setPassword(e.target.value)
-                }}
-                placeholder="Enter Password" 
-                name="password" required/>
+            <div className="login">
+                <h1>login</h1>
+                <form>
+                    <label for="Username"><b>Username</b></label>
+                    <input type="text"
+                    onChange= {(e) =>{
+                        setLoginUser(e.target.value)
+                        
+                    }}
+                    placeholder="Enter Username"
+                    name="username" required/>
+                    <br/>
+                    <label for="Password"><b>Password</b></label>
+                    <input type="password"
+                    onChange= {(e) =>{
+                        setLoginPass(e.target.value)
+                    }}
+                    placeholder="Enter Password" 
+                    name="password" required/>
+                                        <br/>
+                    <button type="button" onClick={login}>Login</button>
+                </form>
 
-                <label for="Email"><b> Email </b></label>
-                <input type="email"
-                onChange= {(e) =>{
-                    setEmail(e.target.value)
-                }}
-                placeholder="Enter Email"
-                name="email" required/>
-                <button type="submit" onClick={register }>Login</button>
-            </form>
+
+            </div>
+
+            <div class="register">
+                <h1>register</h1>
+                <form>
+                    <label for="Username"><b>Username</b></label>
+                    <input type="text"
+                    onChange= {(e) =>{
+                        setUsername(e.target.value)
+                    }}
+                    placeholder="Enter Username"
+                    name="username" required/>
+                    <br/>
+                    <label for="Password"><b>Password</b></label>
+                    <input type="password"
+                    onChange= {(e) =>{
+                        setPassword(e.target.value)
+                    }}
+                    placeholder="Enter Password" 
+                    name="password" required/>
+                    <br/>
+                    <label for="Email"><b> Email </b></label>
+                    <input type="email"
+                    onChange= {(e) =>{
+                        setEmail(e.target.value)
+                    }}
+                    placeholder="Enter Email"
+                    name="email" required/>
+                                        <br/>
+                    <button type="button" onClick={register}>Register</button>
+                </form>
+            </div>
         </div>
     )
 }
